@@ -1,0 +1,33 @@
+/* index.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --scrollbar-color: #00fff9; /* Cyber-cyan por defecto (Hero) */
+}
+
+body {
+  background-color: #050505;
+  overflow-x: hidden; /* Solo bloquea el horizontal */
+  overflow-y: auto;   /* Permite el scroll hacia abajo */
+}
+
+/* --- CUSTOM CYBERPUNK SCROLLBAR --- */
+::-webkit-scrollbar {
+  width: 12px;
+  background: #050505;
+}
+
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+  border-left: 1px solid #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-color);
+  border: 4px solid #050505;
+  border-radius: 6px;
+}

@@ -1,0 +1,398 @@
+/* ContactSection.css */
+.contact-mainframe {
+    background-color: #030303;
+    position: relative;
+    padding: 40px 0;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    overflow: hidden;
+}
+
+/* Cinta de Peligro Negra y Amarilla */
+.warning-tape {
+    width: 100%;
+    height: 15px;
+    background: repeating-linear-gradient(
+        -45deg,
+        var(--cyber-yellow, #fcee0a),
+        var(--cyber-yellow, #fcee0a) 15px,
+        #111 15px,
+        #111 30px
+    );
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-shadow: 0 0 10px rgba(252, 238, 10, 0.3);
+    z-index: 5;
+}
+
+.warning-tape.bottom {
+    top: auto;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        45deg,
+        var(--cyber-yellow, #fcee0a),
+        var(--cyber-yellow, #fcee0a) 15px,
+        #111 15px,
+        #111 30px
+    );
+}
+
+.uplink-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px 5%;
+    position: relative;
+}
+
+/* --- HEADER & GREEBLES --- */
+.uplink-header {
+    border-left: 6px solid var(--cyber-blue, #00fff9);
+    padding-left: 20px;
+    margin-bottom: 50px;
+    max-width: 80%;
+}
+
+.header-greebles {
+    display: flex;
+    gap: 15px;
+    font-family: 'Fira Code', 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.blink-text {
+    color: #27c93f; /* Verde de sistema online */
+    animation: blink-anim 1.5s infinite;
+}
+
+@keyframes blink-anim {
+    0%, 49% { opacity: 1; text-shadow: 0 0 8px rgba(39, 201, 63, 0.8); }
+    50%, 100% { opacity: 0; text-shadow: none; }
+}
+
+.uplink-title {
+    font-size: 3.5rem;
+    color: var(--cyber-yellow, #fcee0a);
+    text-transform: uppercase;
+    margin: 0;
+    line-height: 1;
+    letter-spacing: -2px;
+    text-shadow: 3px 3px 0px var(--cyber-red, #ff003c);
+}
+
+.uplink-subtitle {
+    font-family: 'Fira Code', monospace;
+    color: #777;
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+/* --- CUERPO ASIMÉTRICO --- */
+.uplink-body {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+}
+
+/* Bloque lateral técnico decorativo */
+.side-panel {
+    width: 60px;
+    background: rgba(15, 15, 15, 0.9);
+    border: 1px solid #222;
+    border-right: 3px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0,0,0,1);
+}
+
+.barcode {
+    width: 30px;
+    height: 150px;
+    background: repeating-linear-gradient(
+        180deg,
+        #555,
+        #555 2px,
+        transparent 2px,
+        transparent 6px,
+        #555 6px,
+        #555 8px,
+        transparent 8px,
+        transparent 14px
+    );
+    opacity: 0.5;
+}
+
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: #444;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    margin-top: auto;
+}
+
+/* --- TERMINAL DE FORMULARIO --- */
+.cyber-form {
+    flex: 1;
+    background: linear-gradient(135deg, rgba(8, 8, 8, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%);
+    border: 1px solid #2a2a2a;
+    padding: 30px 40px;
+    /* Esquina cortada abajo a la derecha */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 40px) 100%, 0 100%);
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+/* Patrón rayado en la esquina recortada */
+.cyber-form::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    background: repeating-linear-gradient(-45deg, #222, #222 2px, transparent 2px, transparent 6px);
+}
+
+/* --- FEEDBACK DEL SISTEMA (EmailJS) --- */
+.system-msg {
+    padding: 15px;
+    margin-bottom: 25px;
+    font-family: 'Fira Code', monospace;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-left: 4px solid;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.msg-sending {
+    background: rgba(0, 255, 249, 0.1);
+    color: var(--cyber-blue, #00fff9);
+    border-color: var(--cyber-blue, #00fff9);
+}
+
+.msg-success {
+    background: rgba(39, 201, 63, 0.1);
+    color: #27c93f;
+    border-color: #27c93f;
+}
+
+.msg-error {
+    background: rgba(255, 0, 60, 0.1);
+    color: var(--cyber-red, #ff003c);
+    border-color: var(--cyber-red, #ff003c);
+}
+
+.input-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+/* Etiquetas técnicas */
+.input-group label {
+    display: block;
+    font-family: 'Fira Code', monospace;
+    color: var(--cyber-blue, #00fff9);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* INPUT INDUSTRIAL Y RANURA OSCURA */
+.cyber-input {
+    width: 100%;
+    background: #020202; /* Ranura súper oscura */
+    border: none;
+    border-bottom: 2px solid #222; /* Borde sutil por defecto */
+    border-left: 2px solid var(--cyber-red, #ff003c); /* Línea lateral iluminada */
+    color: #fff;
+    padding: 15px 20px;
+    font-family: 'Fira Code', monospace;
+    font-size: 1.1rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.cyber-textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* CUANDO ESTÁ ESCRIBIENDO (FOCUS) */
+.cyber-input:focus {
+    background: #0d1214;
+    border-bottom-color: var(--cyber-yellow, #fcee0a);
+    border-left-color: var(--cyber-yellow, #fcee0a);
+    color: var(--cyber-yellow, #fcee0a); /* Texto parece neon al escribir */
+    box-shadow: -10px 0 20px -5px rgba(252, 238, 10, 0.3);
+    text-shadow: 0 0 5px rgba(252, 238, 10, 0.5); /* Letras brillantes hacker */
+}
+
+.cyber-input::placeholder {
+    color: #444;
+}
+
+.cyber-input:focus::placeholder {
+    color: transparent;
+}
+
+/* --- BOTÓN DETONADOR --- */
+.cyber-btn {
+    appearance: none;
+    background: var(--cyber-red, #ff003c); /* Rojo peligro por defecto */
+    border: none;
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    letter-spacing: 4px;
+    padding: 20px 50px;
+    cursor: pointer;
+    position: relative;
+    /* Cortes en ambas esquinas opuestas para un look brutalista */
+    clip-path: polygon(20px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%, 0 20px);
+    transition: all 0.1s ease;
+    display: inline-block;
+    margin-top: 20px;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.5);
+}
+
+/* Simulación de volumen y bisel macizo */
+.cyber-btn::before {
+    content: '';
+    position: absolute;
+    top: 3px; left: 3px; right: 3px; bottom: 3px;
+    background: rgba(0, 0, 0, 0.15);
+    clip-path: polygon(18px 0, 100% 0, 100% calc(100% - 18px), calc(100% - 18px) 100%, 0 100%, 0 18px);
+    z-index: 0;
+    transition: background 0.2s ease;
+}
+
+.btn-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* SOBRECARGA AL PASAR EL MOUSE (GLOW) */
+.cyber-btn:hover {
+    background: var(--cyber-yellow, #fcee0a); /* Cambia drásticamente a amarillo radioactivo */
+    color: #000;
+    text-shadow: none;
+    box-shadow: 0 0 40px var(--cyber-yellow, #fcee0a);
+    transform: scale(1.02);
+}
+
+.cyber-btn:active {
+    transform: scale(0.98);
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.social-networks {
+    text-align: right;
+}
+
+.networks-label {
+    display: block;
+    font-family: 'Fira Code', monospace;
+    color: #555;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+}
+
+.networks-links {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+}
+
+.networks-links a {
+    color: var(--cyber-blue, #00fff9);
+    text-decoration: none;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.networks-links a:hover {
+    color: var(--cyber-yellow, #fcee0a);
+    border-bottom-color: var(--cyber-yellow, #fcee0a);
+    text-shadow: 0 0 10px rgba(252, 238, 10, 0.5);
+}
+
+@media (max-width: 768px) {
+    .form-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .social-networks {
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .networks-links {
+        justify-content: center;
+    }
+    .uplink-header {
+        max-width: 100%;
+        margin-bottom: 30px;
+    }
+    .uplink-title {
+        font-size: 2.2rem;
+    }
+    .uplink-body {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .side-panel {
+        width: 100%;
+        flex-direction: row;
+        height: auto;
+        padding: 5px 20px;
+        justify-content: space-between;
+        border-right: 1px solid #222;
+        border-bottom: 3px solid #333;
+    }
+    .barcode {
+        height: 20px;
+        width: 150px;
+        background: repeating-linear-gradient(90deg, #555, #555 2px, transparent 2px, transparent 6px, #555 6px, #555 8px, transparent 8px, transparent 14px);
+    }
+    .vertical-text {
+        writing-mode: horizontal-tb;
+        margin-top: 0;
+        font-size: 0.8rem;
+    }
+    .cyber-form {
+        padding: 30px 20px;
+    }
+    .cyber-btn {
+        width: 100%;
+        font-size: 1.5rem;
+        padding: 15px 20px;
+    }
+}

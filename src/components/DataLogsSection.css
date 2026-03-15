@@ -1,0 +1,164 @@
+/* DataLogsSection.css */
+.data-logs-wrapper {
+    padding: 80px 5%;
+    background-color: var(--dark-bg, #050505);
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border-top: 1px dotted rgba(0, 255, 249, 0.3);
+}
+
+.terminal-container {
+    width: 100%;
+    max-width: 900px;
+    background: rgba(8, 12, 18, 0.95);
+    border: 1px solid #222;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.9), 0 0 20px rgba(0, 255, 249, 0.05);
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    font-family: 'Fira Code', 'Courier New', Courier, monospace;
+}
+
+.matrix-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6; /* Un poco transparente para no marear ni dominar la vista */
+}
+
+/* scanlines estilo CRT */
+.terminal-container::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+    background-size: 100% 4px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.terminal-header {
+    background: #111;
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.dot.red { background-color: #ff5f56; }
+.dot.yellow { background-color: #ffbd2e; }
+.dot.green { background-color: #27c93f; }
+
+.terminal-title {
+    margin-left: 15px;
+    color: #666;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+
+.terminal-body {
+    padding: 40px;
+    height: 450px;
+    overflow-y: auto;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    position: relative;
+}
+
+/* Opcional: tunear la barra de scroll para que luzca cyberpunk */
+.terminal-body::-webkit-scrollbar {
+    width: 8px;
+}
+.terminal-body::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.4); 
+}
+.terminal-body::-webkit-scrollbar-thumb {
+    background: var(--cyber-blue, #00fff9); 
+    border-radius: 4px;
+}
+
+.log-line {
+    margin-bottom: 5px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+/* Colores interactivos del log */
+.type-system { color: #5a7d7c; }
+.type-warning { color: var(--cyber-yellow, #fcee0a); text-shadow: 0 0 8px rgba(252, 238, 10, 0.4); }
+.type-success { color: var(--cyber-blue, #00fff9); text-shadow: 0 0 8px rgba(0, 255, 249, 0.4); }
+.type-header { 
+    color: #fff; 
+    font-weight: 700; 
+    margin-top: 25px; 
+    margin-bottom: 15px; 
+    display: inline-block;
+    background: color-mix(in srgb, var(--cyber-blue) 20%, transparent);
+    padding: 2px 10px;
+}
+
+.type-data { 
+    color: #c4c4c4; 
+    margin-left: 15px; 
+    border-left: 2px solid #333; 
+    padding-left: 10px; 
+}
+
+.type-prompt { 
+    color: var(--cyber-yellow, #fcee0a); 
+    margin-top: 30px; 
+}
+
+/* Cursores */
+.cursor-solid {
+    display: inline-block;
+    width: 10px;
+    height: 1.2rem;
+    background-color: var(--cyber-blue, #00fff9);
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.cursor-blink {
+    display: inline-block;
+    width: 10px;
+    height: 1.2rem;
+    background-color: var(--cyber-blue, #00fff9);
+    vertical-align: middle;
+    animation: terminal-blink 1s step-end infinite;
+    margin-left: 5px;
+    box-shadow: 0 0 10px var(--cyber-blue, #00fff9);
+}
+
+@keyframes terminal-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+@media (max-width: 768px) {
+    .terminal-body {
+        padding: 20px;
+        font-size: 0.95rem;
+        height: 350px;
+    }
+    .terminal-title {
+        font-size: 0.8rem;
+    }
+}
